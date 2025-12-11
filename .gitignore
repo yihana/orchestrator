@@ -1,0 +1,11 @@
+.env
+venv/
+.venv/
+__pycache__/
+node_modules/
+.env
+*.log
+*.zip
+*.pdf
+/server/routers/health.py
+data/
