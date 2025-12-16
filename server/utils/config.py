@@ -21,6 +21,14 @@ class Settings(BaseSettings):
     LANGFUSE_SECRET_KEY: str | None = None
     LANGFUSE_HOST: str | None = None
 
+    # SAP RFC 연결 설정
+    SAP_USER: str | None = None
+    SAP_PASSWD: str | None = None
+    SAP_ASHOST: str | None = None
+    SAP_SYSNR: str | None = None
+    SAP_CLIENT: str | None = None
+    SAP_LANG: str | None = "EN"
+
     API_V1_STR: str = "/api/v1"
     PROJECT_NAME: str = "orchestrator API"
 
@@ -59,6 +67,17 @@ class Settings(BaseSettings):
             azure_endpoint=self.AOAI_ENDPOINT,
         )
 
+    def get_sap_config(self) -> dict[str, str]:
+        config = {
+            "user": self.SAP_USER,
+            "passwd": self.SAP_PASSWD,
+            "ashost": self.SAP_ASHOST,
+            "sysnr": self.SAP_SYSNR,
+            "client": self.SAP_CLIENT,
+            "lang": self.SAP_LANG,
+        }
+        return {k: v for k, v in config.items() if v is not None}
+
 
 # 설정 인스턴스 생성
 settings = Settings()
@@ -71,3 +90,7 @@ def get_llm():
 
 def get_embeddings():
     return settings.get_embeddings()
+
+
+def get_sap_config():
+    return settings.get_sap_config()

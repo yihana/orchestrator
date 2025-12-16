@@ -22,4 +22,5 @@ chromadb
 networkx
 SQLAlchemy>=2.0
 jinja2
+pyrfc
 
