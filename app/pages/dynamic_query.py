@@ -1,16 +1,5 @@
 import os
 
-import streamlit as st
-import streamlit.components.v1 as components
-
-
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8001/api/v1")
-
-st.set_page_config(page_title="RFC Dynamic Query", layout="wide")
-
-# Show the API endpoint that the embedded React UI will call.
-st.caption(f"API base: {API_BASE_URL}/erp/dynamic-query")
-
 components.html(
     f"""
 <!DOCTYPE html>
@@ -34,8 +23,8 @@ components.html(
   <script crossorigin src=\"https://unpkg.com/react@18/umd/react.production.min.js\"></script>
   <script crossorigin src=\"https://unpkg.com/react-dom@18/umd/react-dom.production.min.js\"></script>
   <script type=\"module\">
-    const {{ useEffect, useRef, useState }} = React;
 
+    const {{ useEffect, useRef, useState }} = React;
     const IconFactory = (symbol) => ({{ className = "" }}) =>
       React.createElement("span", {{ className }}, symbol);
 
