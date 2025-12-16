@@ -22,11 +22,11 @@ import sys
 import os
 from pathlib import Path
 
-# 임포트 시 server.db.session 에서 engine, Base를 얻도록 프로젝트 구조를 따릅니다.
+# 임포트 시 server.db.database 에서 engine, Base를 얻도록 프로젝트 구조를 따릅니다.
 try:
-    from server.db.session import engine, Base
+    from server.db.database import engine, Base
 except Exception as e:
-    print("ERROR: cannot import server.db.session (engine/Base).")
+    print("ERROR: cannot import server.db.database (engine/Base).")
     print("Detail:", e)
     sys.exit(1)
 
@@ -68,6 +68,7 @@ def main():
 
     model_modules = [
         "server.db.models",
+        "server.db.erp_models",
         #"server.db.legacy_models",
 
     ]
