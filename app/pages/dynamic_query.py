@@ -1,11 +1,4 @@
 import os
-import streamlit as st
-import streamlit.components.v1 as components
-
-
-API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8001/api/v1")
-
-st.set_page_config(page_title="RFC Dynamic Query", layout="wide")
 
 components.html(
     f"""
@@ -30,10 +23,17 @@ components.html(
   <script crossorigin src=\"https://unpkg.com/react@18/umd/react.production.min.js\"></script>
   <script crossorigin src=\"https://unpkg.com/react-dom@18/umd/react-dom.production.min.js\"></script>
   <script type=\"module\">
-    import * as Lucide from "https://unpkg.com/lucide-react@0.344.0/dist/esm/lucide-react.js";
 
     const {{ useEffect, useRef, useState }} = React;
-    const {{ Send, Database, AlertCircle, CheckCircle, Loader, Grid }} = Lucide;
+    const IconFactory = (symbol) => ({{ className = "" }}) =>
+      React.createElement("span", {{ className }}, symbol);
+
+    const Send = IconFactory("📤");
+    const Database = IconFactory("🗄️");
+    const AlertCircle = IconFactory("⚠️");
+    const CheckCircle = IconFactory("✅");
+    const Loader = IconFactory("⏳");
+    const Grid = IconFactory("🔎");
 
     const apiBaseUrl = "{API_BASE_URL}";
 
